@@ -1,0 +1,12 @@
+# RouteToLocation
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Dnai** | **string** |  | 
+**RouteInfo** | [**RouteInformation**](RouteInformation.md) |  | [optional] 
+**RouteProfId** | **string** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

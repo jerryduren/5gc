@@ -1,0 +1,1672 @@
+openapi: 3.0.0
+info:
+  description: 'Common Data Types for Service Based Interfaces '
+  title: Common Data Types
+  version: 1.0.0
+externalDocs:
+  description: 3GPP TS 29.571 V15.2.0; Common Data Types for Service Based Interfaces
+  url: http://www.3gpp.org/ftp/Specs/archive/29_series/29.571/
+servers:
+- url: /
+paths: {}
+components:
+  responses:
+    400:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+      description: Bad request
+    401:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+      description: Unauthorized
+    403:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+      description: Forbidden
+    404:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+      description: Not Found
+    405:
+      description: Method Not Allowed
+    408:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+      description: Request Timeout
+    406:
+      description: 406 Not Acceptable
+    409:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+      description: Conflict
+    410:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+      description: Gone
+    411:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+      description: Length Required
+    412:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+      description: Precondition Failed
+    413:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+      description: Payload Too Large
+    414:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+      description: URI Too Long
+    415:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+      description: Unsupported Media Type
+    429:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+      description: Too Many Requests
+    500:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+      description: Internal Server Error
+    501:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+      description: Not Implemented
+    503:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+      description: Service Unavailable
+    504:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+      description: Gateway Timeout
+    default:
+      description: Generic Error
+  schemas:
+    Binary:
+      format: binary
+      type: string
+    BinaryRm:
+      format: binary
+      nullable: true
+      type: string
+    Bytes:
+      format: byte
+      type: string
+    BytesRm:
+      format: byte
+      nullable: true
+      type: string
+    Date:
+      format: date
+      type: string
+    DateRm:
+      format: date
+      nullable: true
+      type: string
+    DateTime:
+      format: date-time
+      type: string
+    DateTimeRm:
+      format: date-time
+      nullable: true
+      type: string
+    DiameterIdentity:
+      pattern: ^([A-Za-z0-9]+(-[A-Za-z0-9]+).)+[a-z]{2,}$
+      type: string
+    DiameterIdentityRm:
+      nullable: true
+      pattern: ^([A-Za-z0-9]+(-[A-Za-z0-9]+).)+[a-z]{2,}$
+      type: string
+    Double:
+      format: double
+      type: number
+    DoubleRm:
+      format: double
+      nullable: true
+      type: number
+    DurationSec:
+      format: int32
+      type: integer
+    DurationSecRm:
+      format: int32
+      nullable: true
+      type: integer
+    Float:
+      format: float
+      type: number
+    FloatRm:
+      format: float
+      nullable: true
+      type: number
+    Int32:
+      format: int32
+      type: integer
+    Int32Rm:
+      format: int32
+      nullable: true
+      type: integer
+    Int64:
+      format: int64
+      type: integer
+    Int64Rm:
+      format: int64
+      nullable: true
+      type: integer
+    Ipv4Addr:
+      example: 198.51.100.1
+      pattern: ^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$
+      type: string
+    Ipv4AddrRm:
+      example: 198.51.100.1
+      nullable: true
+      pattern: ^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$
+      type: string
+    Ipv6Addr:
+      allOf:
+      - pattern: ^((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))$
+      - pattern: ^((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))$
+      example: 2001:db8:85a3::8a2e:370:7334
+      type: string
+    Ipv6AddrRm:
+      allOf:
+      - pattern: ^((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))$
+      - pattern: ^((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))$
+      example: 2001:db8:85a3::8a2e:370:7334
+      nullable: true
+      type: string
+    Ipv6Prefix:
+      allOf:
+      - pattern: ^((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(\/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))$
+      - pattern: ^((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(\/.+)$
+      example: 2001:db8:abcd:12::0/64
+      type: string
+    Ipv6PrefixRm:
+      allOf:
+      - pattern: ^((:|(0?|([1-9a-f][0-9a-f]{0,3}))):)((0?|([1-9a-f][0-9a-f]{0,3})):){0,6}(:|(0?|([1-9a-f][0-9a-f]{0,3})))(\/(([0-9])|([0-9]{2})|(1[0-1][0-9])|(12[0-8])))$
+      - pattern: ^((([^:]+:){7}([^:]+))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?))(\/.+)$
+      nullable: true
+      type: string
+    MacAddr48:
+      pattern: ^([0-9a-fA-F]{2})((-[0-9a-fA-F]{2}){5})$
+      type: string
+    MacAddr48Rm:
+      nullable: true
+      pattern: ^([0-9a-fA-F]{2})((-[0-9a-fA-F]{2}){5})$
+      type: string
+    SupportedFeatures:
+      pattern: ^[A-Fa-f0-9]*$
+      type: string
+    Uinteger:
+      format: int32
+      minimum: 0
+      type: integer
+    UintegerRm:
+      format: int32
+      minimum: 0
+      nullable: true
+      type: integer
+    Uint16:
+      format: int32
+      maximum: 65535
+      minimum: 0
+      type: integer
+    Uint16Rm:
+      format: int32
+      maximum: 65535
+      minimum: 0
+      nullable: true
+      type: integer
+    Uint32:
+      format: int32
+      minimum: 0
+      type: integer
+    Uint32Rm:
+      format: int32
+      minimum: 0
+      nullable: true
+      type: integer
+    Uint64:
+      format: int64
+      minimum: 0
+      type: integer
+    Uint64Rm:
+      format: int64
+      minimum: 0
+      nullable: true
+      type: integer
+    Uri:
+      type: string
+    UriRm:
+      nullable: true
+      type: string
+    VarUeId:
+      pattern: ^(imsi-[0-9]{5,15}|nai-.+|msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$
+      type: string
+    VarUeIdRm:
+      nullable: true
+      pattern: ^(imsi-[0-9]{5,15}|nai-.+|msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$
+      type: string
+    TimeZone:
+      type: string
+    TimeZoneRm:
+      nullable: true
+      type: string
+    PatchOperation:
+      anyOf:
+      - enum:
+        - add
+        - copy
+        - move
+        - remove
+        - replace
+        - test
+        type: string
+      - type: string
+    UriScheme:
+      anyOf:
+      - enum:
+        - http
+        - https
+        type: string
+      - type: string
+    ChangeType:
+      anyOf:
+      - enum:
+        - ADD
+        - MOVE
+        - REMOVE
+        - REPLACE
+        type: string
+      - type: string
+    ProblemDetails:
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          format: int32
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+        cause:
+          type: string
+        invalidParams:
+          items:
+            $ref: '#/components/schemas/InvalidParam'
+          minItems: 1
+          type: array
+      type: object
+    Link:
+      properties:
+        href:
+          type: string
+      type: object
+    LinkRm:
+      nullable: true
+      properties:
+        href:
+          type: string
+      type: object
+    PatchItem:
+      properties:
+        op:
+          $ref: '#/components/schemas/PatchOperation'
+        path:
+          type: string
+        from:
+          type: string
+        value:
+          nullable: true
+      required:
+      - op
+      - path
+      type: object
+    LinksValueSchema:
+      oneOf:
+      - items:
+          $ref: '#/components/schemas/Link'
+        minItems: 1
+        type: array
+      - $ref: '#/components/schemas/Link'
+    SelfLink:
+      properties:
+        self:
+          $ref: '#/components/schemas/Link'
+      required:
+      - self
+      type: object
+    InvalidParam:
+      properties:
+        param:
+          type: string
+        reason:
+          type: string
+      required:
+      - param
+      type: object
+    ChangeItem:
+      properties:
+        op:
+          $ref: '#/components/schemas/ChangeType'
+        path:
+          type: string
+        from:
+          type: string
+        origValue: {}
+        newValue: {}
+      required:
+      - op
+      - path
+      type: object
+    NotifyItem:
+      properties:
+        resourceId:
+          type: string
+        changes:
+          items:
+            $ref: '#/components/schemas/ChangeItem'
+          minItems: 1
+          type: array
+      type: object
+    ComplexQuery:
+      oneOf:
+      - $ref: '#/components/schemas/Cnf'
+      - $ref: '#/components/schemas/Dnf'
+    Cnf:
+      properties:
+        cnfUnits:
+          items:
+            $ref: '#/components/schemas/CnfUnit'
+          minItems: 1
+          type: array
+      required:
+      - cnfUnits
+      type: object
+    Dnf:
+      properties:
+        dnfUnits:
+          items:
+            $ref: '#/components/schemas/DnfUnit'
+          minItems: 1
+          type: array
+      required:
+      - dnfUnits
+      type: object
+    CnfUnit:
+      properties:
+        cnfUnit:
+          items:
+            $ref: '#/components/schemas/Atom'
+          minItems: 1
+          type: array
+      required:
+      - cnfUnit
+      type: object
+    DnfUnit:
+      properties:
+        dnfUnit:
+          items:
+            $ref: '#/components/schemas/Atom'
+          minItems: 1
+          type: array
+      required:
+      - dnfUnit
+      type: object
+    Atom:
+      properties:
+        attr:
+          type: string
+        value: {}
+        negative:
+          type: boolean
+      required:
+      - attr
+      - value
+      type: object
+    Dnn:
+      type: string
+    DnnRm:
+      nullable: true
+      type: string
+    Gpsi:
+      pattern: ^(msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$
+      type: string
+    GpsiRm:
+      nullable: true
+      pattern: ^(msisdn-[0-9]{5,15}|extid-[^@]+@[^@]+|.+)$
+      type: string
+    GroupId:
+      pattern: ^[A-Fa-f0-9]{8}-[0-9]{3}-[0-9]{2,3}-([A-Fa-f0-9][A-Fa-f0-9]){1,10}$
+      type: string
+    GroupIdRm:
+      nullable: true
+      pattern: ^[A-Fa-f0-9]{8}-[0-9]{3}-[0-9]{2,3}-([A-Fa-f0-9][A-Fa-f0-9]){1,10}$
+      type: string
+    Pei:
+      pattern: ^(imei-[0-9]{15}|imeisv-[0-9]{16}|.+)$
+      type: string
+    PeiRm:
+      nullable: true
+      pattern: ^(imei-[0-9]{15}|imeisv-[0-9]{16}|.+)$
+      type: string
+    Supi:
+      pattern: ^(imsi-[0-9]{5,15}|nai-.+|.+)$
+      type: string
+    SupiRm:
+      nullable: true
+      pattern: ^(imsi-[0-9]{5,15}|nai-.+|.+)$
+      type: string
+    NfInstanceId:
+      format: uuid
+      type: string
+    AmfId:
+      pattern: ^[A-Fa-f0-9]{6}$
+      type: string
+    RfspIndex:
+      format: int32
+      maximum: 256
+      minimum: 1
+      type: integer
+    RfspIndexRm:
+      format: int32
+      maximum: 256
+      minimum: 1
+      nullable: true
+      type: integer
+    NfGroupId:
+      type: string
+    Guami:
+      properties:
+        plmnId:
+          $ref: '#/components/schemas/PlmnId'
+        amfId:
+          pattern: ^[A-Fa-f0-9]{6}$
+          type: string
+      required:
+      - amfId
+      - plmnId
+      type: object
+    GuamiRm:
+      nullable: true
+      properties:
+        plmnId:
+          $ref: '#/components/schemas/PlmnId'
+        amfId:
+          pattern: ^[A-Fa-f0-9]{6}$
+          type: string
+      required:
+      - amfId
+      - plmnId
+      type: object
+    NetworkId:
+      properties:
+        mnc:
+          pattern: ^\d{2,3}$
+          type: string
+        mcc:
+          pattern: ^\d{3}$
+          type: string
+      type: object
+    ApplicationId:
+      type: string
+    ApplicationIdRm:
+      nullable: true
+      type: string
+    PduSessionId:
+      format: int32
+      maximum: 255
+      minimum: 0
+      type: integer
+    Mcc:
+      pattern: ^\d{3}$
+      type: string
+    MccRm:
+      nullable: true
+      pattern: ^\d{3}$
+      type: string
+    Mnc:
+      pattern: ^\d{2,3}$
+      type: string
+    MncRm:
+      nullable: true
+      pattern: ^\d{2,3}$
+      type: string
+    Tac:
+      pattern: (^[A-Fa-f0-9]{4}$)|(^[A-Fa-f0-9]{6}$)
+      type: string
+    TacRm:
+      nullable: true
+      pattern: (^[A-Fa-f0-9]{4}$)|(^[A-Fa-f0-9]{6}$)
+      type: string
+    EutraCellId:
+      pattern: ^[A-Fa-f0-9]{7}$
+      type: string
+    EutraCellIdRm:
+      nullable: true
+      pattern: ^[A-Fa-f0-9]{7}$
+      type: string
+    NrCellId:
+      pattern: ^[A-Fa-f0-9]{9}$
+      type: string
+    NrCellIdRm:
+      nullable: true
+      pattern: ^[A-Fa-f0-9]{9}$
+      type: string
+    Dnai:
+      type: string
+    DnaiRm:
+      nullable: true
+      type: string
+    5GMmCause:
+      $ref: '#/components/schemas/Uinteger'
+    AmfName:
+      type: string
+    AreaCode:
+      type: string
+    AreaCodeRm:
+      nullable: true
+      type: string
+    N3IwfId:
+      type: string
+    NgeNbId:
+      pattern: ^(MacroNGeNB-[A-Fa-f0-9]{5}|LMacroNGeNB-[A-Fa-f0-9]{6}|SMacroNGeNB-[A-Fa-f0-9]{5})$
+      type: string
+    AccessType:
+      enum:
+      - 3GPP_ACCESS
+      - NON_3GPP_ACCESS
+      type: string
+    AccessTypeRm:
+      enum:
+      - 3GPP_ACCESS
+      - NON_3GPP_ACCESS
+      nullable: true
+      type: string
+    RatType:
+      anyOf:
+      - enum:
+        - NR
+        - EUTRA
+        - WLAN
+        - VIRTUAL
+        type: string
+      - type: string
+    RatTypeRm:
+      anyOf:
+      - enum:
+        - NR
+        - EUTRA
+        - WLAN
+        - VIRTUAL
+        type: string
+      - type: string
+      nullable: true
+    PduSessionType:
+      anyOf:
+      - enum:
+        - IPV4
+        - IPV6
+        - IPV4V6
+        - UNSTRUCTURED
+        - ETHERNET
+        type: string
+      - type: string
+    PduSessionTypeRm:
+      anyOf:
+      - enum:
+        - IPV4
+        - IPV6
+        - IPV4V6
+        - UNSTRUCTURED
+        - ETHERNET
+        type: string
+      - type: string
+      nullable: true
+    UpIntegrity:
+      anyOf:
+      - enum:
+        - REQUIRED
+        - PREFERRED
+        - NOT_NEEDED
+        type: string
+      - type: string
+    UpIntegrityRm:
+      anyOf:
+      - enum:
+        - REQUIRED
+        - PREFERRED
+        - NOT_NEEDED
+        type: string
+      - type: string
+      nullable: true
+    UpConfidentiality:
+      anyOf:
+      - enum:
+        - REQUIRED
+        - PREFERRED
+        - NOT_NEEDED
+        type: string
+      - type: string
+    UpConfidentialityRm:
+      anyOf:
+      - enum:
+        - REQUIRED
+        - PREFERRED
+        - NOT_NEEDED
+        type: string
+      - type: string
+      nullable: true
+    SscMode:
+      anyOf:
+      - enum:
+        - SSC_MODE_1
+        - SSC_MODE_2
+        - SSC_MODE_3
+        type: string
+      - type: string
+    SscModeRm:
+      anyOf:
+      - enum:
+        - SSC_MODE_1
+        - SSC_MODE_2
+        - SSC_MODE_3
+        type: string
+      - type: string
+      nullable: true
+    DnaiChangeType:
+      anyOf:
+      - enum:
+        - EARLY
+        - EARLY_LATE
+        - LATE
+        type: string
+      - description: |
+          This string provides forward-compatibility with future extensions to the enumeration but is not used to encode content defined in the present version of this API.
+        type: string
+      description: |
+        Possible values are - EARLY: Early notification of UP path reconfiguration. - EARLY_LATE: Early and late notification of UP path reconfiguration. This value shall only be present in the subscription to the DNAI change event. - LATE: Late notification of UP path reconfiguration.
+    DnaiChangeTypeRm:
+      anyOf:
+      - enum:
+        - EARLY
+        - EARLY_LATE
+        - LATE
+        type: string
+      - type: string
+      nullable: true
+    RestrictionType:
+      anyOf:
+      - enum:
+        - ALLOWED_AREAS
+        - NOT_ALLOWED_AREAS
+        type: string
+      - type: string
+    RestrictionTypeRm:
+      anyOf:
+      - enum:
+        - ALLOWED_AREAS
+        - NOT_ALLOWED_AREAS
+        type: string
+      - type: string
+      nullable: true
+    CoreNetworkType:
+      anyOf:
+      - enum:
+        - 5GC
+        - EPC
+        type: string
+      - type: string
+    CoreNetworkTypeRm:
+      anyOf:
+      - enum:
+        - 5GC
+        - EPC
+        type: string
+      - type: string
+      nullable: true
+    PresenceState:
+      anyOf:
+      - enum:
+        - IN_AREA
+        - OUT_OF_AREA
+        - UNKNOWN
+        - INACTIVE
+        type: string
+      - type: string
+    Snssai:
+      properties:
+        sst:
+          format: int32
+          maximum: 255
+          minimum: 0
+          type: integer
+        sd:
+          pattern: ^[A-Fa-f0-9]{6}$
+          type: string
+      required:
+      - sst
+      type: object
+    PlmnId:
+      properties:
+        mcc:
+          pattern: ^\d{3}$
+          type: string
+        mnc:
+          pattern: ^\d{2,3}$
+          type: string
+      required:
+      - mcc
+      - mnc
+      type: object
+    PlmnIdRm:
+      nullable: true
+      properties:
+        mcc:
+          pattern: ^\d{3}$
+          type: string
+        mnc:
+          pattern: ^\d{2,3}$
+          type: string
+      required:
+      - mcc
+      - mnc
+      type: object
+    Tai:
+      properties:
+        plmnId:
+          $ref: '#/components/schemas/PlmnId'
+        tac:
+          pattern: (^[A-Fa-f0-9]{4}$)|(^[A-Fa-f0-9]{6}$)
+          type: string
+      required:
+      - plmnId
+      - tac
+      type: object
+    TaiRm:
+      nullable: true
+      properties:
+        plmnId:
+          $ref: '#/components/schemas/PlmnId'
+        tac:
+          pattern: (^[A-Fa-f0-9]{4}$)|(^[A-Fa-f0-9]{6}$)
+          type: string
+      required:
+      - plmnId
+      - tac
+      type: object
+    Ecgi:
+      properties:
+        plmnId:
+          $ref: '#/components/schemas/PlmnId'
+        eutraCellId:
+          pattern: ^[A-Fa-f0-9]{7}$
+          type: string
+      required:
+      - eutraCellId
+      - plmnId
+      type: object
+    EcgiRm:
+      nullable: true
+      properties:
+        plmnId:
+          $ref: '#/components/schemas/PlmnId'
+        eutraCellId:
+          pattern: ^[A-Fa-f0-9]{7}$
+          type: string
+      required:
+      - eutraCellId
+      - plmnId
+      type: object
+    Ncgi:
+      properties:
+        plmnId:
+          $ref: '#/components/schemas/PlmnId'
+        nrCellId:
+          pattern: ^[A-Fa-f0-9]{9}$
+          type: string
+      required:
+      - nrCellId
+      - plmnId
+      type: object
+    NcgiRm:
+      nullable: true
+      properties:
+        plmnId:
+          $ref: '#/components/schemas/PlmnId'
+        nrCellId:
+          pattern: ^[A-Fa-f0-9]{9}$
+          type: string
+      required:
+      - nrCellId
+      - plmnId
+      type: object
+    UserLocation:
+      properties:
+        eutraLocation:
+          $ref: '#/components/schemas/EutraLocation'
+        nrLocation:
+          $ref: '#/components/schemas/NrLocation'
+        n3gaLocation:
+          $ref: '#/components/schemas/N3gaLocation'
+      type: object
+    EutraLocation:
+      properties:
+        tai:
+          $ref: '#/components/schemas/Tai'
+        ecgi:
+          $ref: '#/components/schemas/Ecgi'
+        ageOfLocationInformation:
+          format: int32
+          maximum: 32767
+          minimum: 0
+          type: integer
+        ueLocationTimestamp:
+          format: date-time
+          type: string
+        geographicalInformation:
+          pattern: ^[0-9A-F]{16}$
+          type: string
+        geodeticInformation:
+          pattern: ^[0-9A-F]{20}$
+          type: string
+        globalNgenbId:
+          $ref: '#/components/schemas/GlobalRanNodeId'
+      required:
+      - ecgi
+      - tai
+      type: object
+    EutraLocationRm:
+      nullable: true
+      properties:
+        tai:
+          $ref: '#/components/schemas/Tai'
+        ecgi:
+          $ref: '#/components/schemas/Ecgi'
+        ageOfLocationInformation:
+          format: int32
+          maximum: 32767
+          minimum: 0
+          type: integer
+        ueLocationTimestamp:
+          format: date-time
+          type: string
+        geographicalInformation:
+          pattern: ^[0-9A-F]{16}$
+          type: string
+        geodeticInformation:
+          pattern: ^[0-9A-F]{20}$
+          type: string
+        globalNgenbId:
+          $ref: '#/components/schemas/GlobalRanNodeId'
+      required:
+      - ecgi
+      - tai
+      type: object
+    NrLocation:
+      properties:
+        tai:
+          $ref: '#/components/schemas/Tai'
+        ncgi:
+          $ref: '#/components/schemas/Ncgi'
+        ageOfLocationInformation:
+          format: int32
+          maximum: 32767
+          minimum: 0
+          type: integer
+        ueLocationTimestamp:
+          format: date-time
+          type: string
+        geographicalInformation:
+          pattern: ^[0-9A-F]{16}$
+          type: string
+        geodeticInformation:
+          pattern: ^[0-9A-F]{20}$
+          type: string
+        globalGnbId:
+          $ref: '#/components/schemas/GlobalRanNodeId'
+      required:
+      - ncgi
+      - tai
+      type: object
+    NrLocationRm:
+      nullable: true
+      properties:
+        tai:
+          $ref: '#/components/schemas/Tai'
+        ncgi:
+          $ref: '#/components/schemas/Ncgi'
+        ageOfLocationInformation:
+          format: int32
+          maximum: 32767
+          minimum: 0
+          type: integer
+        ueLocationTimestamp:
+          format: date-time
+          type: string
+        geographicalInformation:
+          pattern: ^[0-9A-F]{16}$
+          type: string
+        geodeticInformation:
+          pattern: ^[0-9A-F]{20}$
+          type: string
+        globalGnbId:
+          $ref: '#/components/schemas/GlobalRanNodeId'
+      required:
+      - ncgi
+      - tai
+      type: object
+    N3gaLocation:
+      properties:
+        n3gppTai:
+          $ref: '#/components/schemas/Tai'
+        n3IwfId:
+          pattern: ^[A-Fa-f0-9]+$
+          type: string
+        ueIpv4Addr:
+          example: 198.51.100.1
+          pattern: ^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$
+          type: string
+        ueIpv6Addr:
+          $ref: '#/components/schemas/Ipv6Addr'
+        portNumber:
+          format: int32
+          minimum: 0
+          type: integer
+      type: object
+    UpSecurity:
+      properties:
+        upIntegr:
+          $ref: '#/components/schemas/UpIntegrity'
+        upConfid:
+          $ref: '#/components/schemas/UpConfidentiality'
+      required:
+      - upConfid
+      - upIntegr
+      type: object
+    UpSecurityRm:
+      nullable: true
+      properties:
+        upIntegr:
+          $ref: '#/components/schemas/UpIntegrity'
+        upConfid:
+          $ref: '#/components/schemas/UpConfidentiality'
+      required:
+      - upConfid
+      - upIntegr
+      type: object
+    NgApCause:
+      properties:
+        group:
+          format: int32
+          minimum: 0
+          type: integer
+        value:
+          format: int32
+          minimum: 0
+          type: integer
+      required:
+      - group
+      - value
+      type: object
+    BackupAmfInfo:
+      properties:
+        backupAmf:
+          type: string
+        guamiList:
+          items:
+            $ref: '#/components/schemas/Guami'
+          minItems: 1
+          type: array
+      required:
+      - backupAmf
+      type: object
+    RefToBinaryData:
+      properties:
+        contentId:
+          type: string
+      required:
+      - contentId
+      type: object
+    RefToBinaryDataRm:
+      nullable: true
+      properties:
+        contentId:
+          type: string
+      required:
+      - contentId
+      type: object
+    RouteToLocation:
+      nullable: true
+      properties:
+        dnai:
+          type: string
+        routeInfo:
+          $ref: '#/components/schemas/RouteInformation'
+        routeProfId:
+          nullable: true
+          type: string
+      required:
+      - dnai
+      type: object
+    RouteInformation:
+      nullable: true
+      properties:
+        ipv4Addr:
+          example: 198.51.100.1
+          pattern: ^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$
+          type: string
+        ipv6Addr:
+          $ref: '#/components/schemas/Ipv6Addr'
+        portNumber:
+          format: int32
+          minimum: 0
+          type: integer
+      required:
+      - portNumber
+      type: object
+    SubscribedDefaultQos:
+      properties:
+        5qi:
+          format: int32
+          maximum: 255
+          minimum: 0
+          type: integer
+        arp:
+          $ref: '#/components/schemas/Arp'
+        priorityLevel:
+          format: int32
+          maximum: 127
+          minimum: 1
+          type: integer
+      required:
+      - 5qi
+      - arp
+      type: object
+    Area:
+      oneOf:
+      - required:
+        - tacs
+      - required:
+        - areaCode
+      properties:
+        tacs:
+          items:
+            $ref: '#/components/schemas/Tac'
+          minItems: 1
+          type: array
+        areaCodes:
+          $ref: '#/components/schemas/AreaCode'
+      type: object
+    ServiceAreaRestriction:
+      allOf:
+      - oneOf:
+        - not:
+            required:
+            - restrictionType
+        - required:
+          - areas
+      - anyOf:
+        - not:
+            properties:
+              restrictionType:
+                enum:
+                - NOT_ALLOWED_AREAS
+                type: string
+            required:
+            - restrictionType
+        - not:
+            required:
+            - maxNumOfTAs
+      properties:
+        restrictionType:
+          $ref: '#/components/schemas/RestrictionType'
+        areas:
+          items:
+            $ref: '#/components/schemas/Area'
+          type: array
+        maxNumOfTAs:
+          $ref: '#/components/schemas/Uinteger'
+      type: object
+    PresenceInfo:
+      properties:
+        praId:
+          type: string
+        presenceState:
+          $ref: '#/components/schemas/PresenceState'
+        trackingAreaList:
+          items:
+            $ref: '#/components/schemas/Tai'
+          minItems: 1
+          type: array
+        ecgiList:
+          items:
+            $ref: '#/components/schemas/Ecgi'
+          minItems: 1
+          type: array
+        ncgiList:
+          items:
+            $ref: '#/components/schemas/Ncgi'
+          minItems: 1
+          type: array
+        globalRanNodeIdList:
+          items:
+            $ref: '#/components/schemas/GlobalRanNodeId'
+          minItems: 1
+          type: array
+      type: object
+    PresenceInfoRm:
+      nullable: true
+      properties:
+        praId:
+          type: string
+        presenceState:
+          $ref: '#/components/schemas/PresenceState'
+        trackingAreaList:
+          items:
+            $ref: '#/components/schemas/Tai'
+          minItems: 0
+          type: array
+        ecgiList:
+          items:
+            $ref: '#/components/schemas/Ecgi'
+          minItems: 0
+          type: array
+        ncgiList:
+          items:
+            $ref: '#/components/schemas/Ncgi'
+          minItems: 0
+          type: array
+        globalRanNodeIdList:
+          items:
+            $ref: '#/components/schemas/GlobalRanNodeId'
+          type: array
+      type: object
+    GlobalRanNodeId:
+      oneOf:
+      - required:
+        - n3IwfId
+      - required:
+        - gNbId
+      - required:
+        - ngeNbId
+      properties:
+        plmnId:
+          $ref: '#/components/schemas/PlmnId'
+        n3IwfId:
+          $ref: '#/components/schemas/N3IwfId'
+        gNbId:
+          $ref: '#/components/schemas/GNbId'
+        ngeNbId:
+          $ref: '#/components/schemas/NgeNbId'
+      required:
+      - plmnId
+      type: object
+    GNbId:
+      properties:
+        bitLength:
+          format: int32
+          maximum: 32
+          minimum: 22
+          type: integer
+        gNBValue:
+          pattern: ^[A-Fa-f0-9]{6,8}$
+          type: string
+      required:
+      - bitLength
+      - gNBValue
+      type: object
+    Qfi:
+      format: int32
+      maximum: 63
+      minimum: 0
+      type: integer
+    QfiRm:
+      format: int32
+      maximum: 63
+      minimum: 0
+      nullable: true
+      type: integer
+    5Qi:
+      format: int32
+      maximum: 255
+      minimum: 0
+      type: integer
+    5QiRm:
+      format: int32
+      maximum: 255
+      minimum: 0
+      nullable: true
+      type: integer
+    BitRate:
+      pattern: ^\d+(\.\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$
+      type: string
+    BitRateRm:
+      nullable: true
+      pattern: ^\d+(\.\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$
+      type: string
+    ArpPriorityLevel:
+      format: int32
+      maximum: 15
+      minimum: 1
+      nullable: true
+      type: integer
+    5QiPriorityLevel:
+      format: int32
+      maximum: 127
+      minimum: 1
+      type: integer
+    5QiPriorityLevelRm:
+      format: int32
+      maximum: 127
+      minimum: 1
+      nullable: true
+      type: integer
+    PacketDelBudget:
+      format: int32
+      minimum: 1
+      type: integer
+    PacketDelBudgetRm:
+      format: int32
+      minimum: 1
+      nullable: true
+      type: integer
+    PacketErrRate:
+      pattern: ^([0-9]E-[0-9])$
+      type: string
+    PacketErrRateRm:
+      nullable: true
+      pattern: ^([0-9]E-[0-9])$
+      type: string
+    PacketLossRate:
+      format: int32
+      maximum: 1000
+      minimum: 0
+      type: integer
+    PacketLossRateRm:
+      format: int32
+      maximum: 1000
+      minimum: 0
+      nullable: true
+      type: integer
+    AverWindow:
+      default: 2000
+      format: int32
+      maximum: 4095
+      minimum: 1
+      type: integer
+    AverWindowRm:
+      default: 2000
+      format: int32
+      maximum: 4095
+      minimum: 1
+      nullable: true
+      type: integer
+    MaxDataBurstVol:
+      format: int32
+      maximum: 4095
+      minimum: 1
+      type: integer
+    MaxDataBurstVolRm:
+      format: int32
+      maximum: 4095
+      minimum: 1
+      nullable: true
+      type: integer
+    PreemptionCapability:
+      anyOf:
+      - enum:
+        - NOT_PREEMPT
+        - MAY_PREEMPT
+        type: string
+      - type: string
+    PreemptionCapabilityRm:
+      anyOf:
+      - enum:
+        - NOT_PREEMPT
+        - MAY_PREEMPT
+        type: string
+      - type: string
+      nullable: true
+    PreemptionVulnerability:
+      anyOf:
+      - enum:
+        - NOT_PREEMPTABLE
+        - PREEMPTABLE
+        type: string
+      - type: string
+    PreemptionVulnerabilityRm:
+      anyOf:
+      - enum:
+        - NOT_PREEMPTABLE
+        - PREEMPTABLE
+        type: string
+      - type: string
+      nullable: true
+    ReflectiveQoSAttribute:
+      anyOf:
+      - enum:
+        - RQOS
+        - NO_RQOS
+        type: string
+      - type: string
+    ReflectiveQoSAttributeRm:
+      anyOf:
+      - enum:
+        - RQOS
+        - NO_RQOS
+        type: string
+      - type: string
+      nullable: true
+    NotificationControl:
+      anyOf:
+      - enum:
+        - REQUESTED
+        - NOT_REQUESTED
+        type: string
+      - type: string
+    NotificationControlRm:
+      anyOf:
+      - enum:
+        - REQUESTED
+        - NOT_REQUESTED
+        type: string
+      - type: string
+      nullable: true
+    QosResourceType:
+      anyOf:
+      - enum:
+        - NON_GBR
+        - NON_CRITICAL_GBR
+        - CRITICAL_GBR
+        type: string
+      - type: string
+    QosResourceTypeRm:
+      anyOf:
+      - enum:
+        - NON_GBR
+        - NON_CRITICAL_GBR
+        - CRITICAL_GBR
+        type: string
+      - type: string
+      nullable: true
+    AdditionalQosFlowInfo:
+      anyOf:
+      - enum:
+        - MORE_LIKELY
+        type: string
+      - type: string
+      nullable: true
+    Arp:
+      properties:
+        priorityLevel:
+          format: int32
+          maximum: 15
+          minimum: 1
+          nullable: true
+          type: integer
+        preemptCap:
+          $ref: '#/components/schemas/PreemptionCapability'
+        preemptVuln:
+          $ref: '#/components/schemas/PreemptionVulnerability'
+      required:
+      - preemptCap
+      - preemptVuln
+      - priorityLevel
+      type: object
+    ArpRm:
+      nullable: true
+      properties:
+        priorityLevel:
+          format: int32
+          maximum: 15
+          minimum: 1
+          nullable: true
+          type: integer
+        preemptCap:
+          $ref: '#/components/schemas/PreemptionCapability'
+        preemptVuln:
+          $ref: '#/components/schemas/PreemptionVulnerability'
+      required:
+      - preemptCap
+      - preemptVuln
+      - priorityLevel
+      type: object
+    Ambr:
+      properties:
+        uplink:
+          pattern: ^\d+(\.\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$
+          type: string
+        downlink:
+          pattern: ^\d+(\.\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$
+          type: string
+      required:
+      - downlink
+      - uplink
+      type: object
+    AmbrRm:
+      nullable: true
+      properties:
+        uplink:
+          pattern: ^\d+(\.\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$
+          type: string
+        downlink:
+          pattern: ^\d+(\.\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$
+          type: string
+      required:
+      - downlink
+      - uplink
+      type: object
+    Dynamic5Qi:
+      properties:
+        resourceType:
+          $ref: '#/components/schemas/QosResourceType'
+        priorityLevel:
+          format: int32
+          maximum: 127
+          minimum: 1
+          type: integer
+        packetDelayBudget:
+          format: int32
+          minimum: 1
+          type: integer
+        packetErrRate:
+          pattern: ^([0-9]E-[0-9])$
+          type: string
+        averWindow:
+          default: 2000
+          format: int32
+          maximum: 4095
+          minimum: 1
+          type: integer
+        maxDataBurstVol:
+          format: int32
+          maximum: 4095
+          minimum: 1
+          type: integer
+      required:
+      - packetDelayBudget
+      - packetErrRate
+      - priorityLevel
+      - resourceType
+      type: object
+    NonDynamic5Qi:
+      minProperties: 0
+      properties:
+        priorityLevel:
+          format: int32
+          maximum: 127
+          minimum: 1
+          type: integer
+        averWindow:
+          default: 2000
+          format: int32
+          maximum: 4095
+          minimum: 1
+          type: integer
+        maxDataBurstVol:
+          format: int32
+          maximum: 4095
+          minimum: 1
+          type: integer
+      type: object
+    TraceDepth:
+      anyOf:
+      - enum:
+        - MINIMUM
+        - MEDIUM
+        - MAXIMUM
+        - MINIMUM_WO_VENDOR_EXTENSION
+        - MEDIUM_WO_VENDOR_EXTENSION
+        - MAXIMUM_WO_VENDOR_EXTENSION
+        type: string
+      - type: string
+    TraceDepthRm:
+      anyOf:
+      - enum:
+        - MINIMUM
+        - MEDIUM
+        - MAXIMUM
+        - MINIMUM_WO_VENDOR_EXTENSION
+        - MEDIUM_WO_VENDOR_EXTENSION
+        - MAXIMUM_WO_VENDOR_EXTENSION
+        type: string
+      - type: string
+      nullable: true
+    TraceData:
+      nullable: true
+      properties:
+        traceRef:
+          pattern: ^[0-9]{3}[0-9]{2,3}-[A-Fa-f0-9]{6}$
+          type: string
+        traceDepth:
+          $ref: '#/components/schemas/TraceDepth'
+        neTypeList:
+          pattern: ^[A-Fa-f0-9]+$
+          type: string
+        eventList:
+          pattern: ^[A-Fa-f0-9]+$
+          type: string
+        collectionEntityIpv4Addr:
+          example: 198.51.100.1
+          pattern: ^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$
+          type: string
+        collectionEntityIpv6Addr:
+          $ref: '#/components/schemas/Ipv6Addr'
+        interfaceList:
+          pattern: ^[A-Fa-f0-9]+$
+          type: string
+      required:
+      - eventList
+      - neTypeList
+      - traceDepth
+      - traceRef
+      type: object
+    RoamingOdb:
+      anyOf:
+      - enum:
+        - OUTSIDE_HOME_PLMN
+        - OUTSIDE_HOME_PLMN_COUNTRY
+        type: string
+      - type: string
+    OdbPacketServices:
+      anyOf:
+      - enum:
+        - ALL_PACKET_SERVICES
+        - ROAMER_ACCESS_HPLMN_AP
+        - ROAMER_ACCESS_VPLMN_AP
+        type: string
+      - type: string
+      nullable: true
+    OdbData:
+      properties:
+        roamingOdb:
+          $ref: '#/components/schemas/RoamingOdb'
+        odbPacketServices:
+          $ref: '#/components/schemas/OdbPacketServices'
+      type: object
+    ChargingId:
+      $ref: '#/components/schemas/Uint32'
+    RatingGroup:
+      $ref: '#/components/schemas/Uint32'
+    ServiceId:
+      $ref: '#/components/schemas/Uint32'
+    SecondaryRatUsageReport:
+      properties:
+        secondaryRatType:
+          $ref: '#/components/schemas/RatType'
+        qosFlowsUsageData:
+          items:
+            $ref: '#/components/schemas/QosFlowUsageReport'
+          minItems: 1
+          type: array
+      required:
+      - qosFlowsUsageData
+      - secondaryRatType
+      type: object
+    QosFlowUsageReport:
+      properties:
+        qfi:
+          format: int32
+          maximum: 63
+          minimum: 0
+          type: integer
+        startTimeStamp:
+          format: date-time
+          type: string
+        endTimeStamp:
+          format: date-time
+          type: string
+        downlinkVolume:
+          format: int64
+          type: integer
+        uplinkVolume:
+          format: int64
+          type: integer
+      required:
+      - downlinkVolume
+      - endTimeStamp
+      - qfi
+      - startTimeStamp
+      - uplinkVolume
+      type: object
