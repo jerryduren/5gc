@@ -34,6 +34,9 @@ func main() {
 		},
 	}
 	client := &http.Client{Transport: tr}
+	
+	client.Do(http.Request{})
+	
 	resp, err := client.Get("https://localhost.localdomain:8081")
 	if err != nil {
 		fmt.Println("Get error:", err)
