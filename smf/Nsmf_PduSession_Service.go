@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 	
-	"github.com/jerryduren/5gc/prp"
+	"github.com/jerryduren/5gc/plt"
 )
 
 var(
@@ -50,9 +50,9 @@ func onShutdownNsmfPduSessionServer(){
 }
 
 func StartNsmfPduSessionService() error {
-	prp.DebugInfo("Nsmf_Pdu_Session Service is started!")
+	plt.DebugInfo("Nsmf_Pdu_Session Service is started!")
 	if err:=NsmfPduSessionServer.ListenAndServe();err!=nil{
-		prp.DebugInfo("Start Nsmf_Pdu_Session Failure!")
+		plt.DebugInfo("Start Nsmf_Pdu_Session Failure!")
 		return err
 	}
 	
@@ -60,6 +60,6 @@ func StartNsmfPduSessionService() error {
 }
 
 func ShutdownNsmfPduSessionService()error{
-	prp.DebugInfo("I will close Nsmf_Pdu_Session Service!")
+	plt.DebugInfo("I will close Nsmf_Pdu_Session Service!")
 	return NsmfPduSessionServer.Close()
 }

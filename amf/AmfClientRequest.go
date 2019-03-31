@@ -10,14 +10,14 @@ import (
 	"net/textproto"
 	
 	"github.com/jerryduren/5gc/model"
-	"github.com/jerryduren/5gc/prp"
+	"github.com/jerryduren/5gc/plt"
 )
 
 func HeartBeatBetweenAmfAndSmf()error{
 	_,err:=NsmfPduSessionClient.Get(SmfBaseURL)
 	if err!=nil{
 		log.Fatal(err)
-		prp.ErrorInfo("Heartbeat is failure between AMF and SMF.")
+		plt.ErrorInfo("Heartbeat is failure between AMF and SMF.")
 		return err
 	}else {
 		fmt.Println("Path test is succeed between AMF and SMF.")
@@ -69,13 +69,13 @@ func PostSmContexts(body *model.SmContextCreateBody) (model.SmContextCreatedData
 	part,err:=w.CreatePart(mHead)
 	if err!=nil{
 		log.Fatal(err)
-		prp.ErrorInfo("Create PostSmContexts Body Error!")
+		plt.ErrorInfo("Create PostSmContexts Body Error!")
 		return localVarReturnValue,nil,err
 	}
 	partData,err:=json.Marshal(body.JsonData)
 	if err!=nil{
 		log.Fatal(err)
-		prp.ErrorInfo("Json marshal failure for PostSmContexts!")
+		plt.ErrorInfo("Json marshal failure for PostSmContexts!")
 		return localVarReturnValue,nil,err
 	}
 	_,err=part.Write(partData)
@@ -104,7 +104,7 @@ func PostSmContexts(body *model.SmContextCreateBody) (model.SmContextCreatedData
 	req, err:=http.NewRequest("POST",SmfBaseURL+"/sm-contexts",bytes.NewReader(localBody.Bytes()))
 	if err!=nil{
 		log.Fatal(err)
-		prp.ErrorInfo("Create Request is failure for PostSmContexts.")
+		plt.ErrorInfo("Create Request is failure for PostSmContexts.")
 		return localVarReturnValue,nil,err
 		
 	}
@@ -125,7 +125,7 @@ func PostSmContexts(body *model.SmContextCreateBody) (model.SmContextCreatedData
 	
 	rsp,err:=NsmfPduSessionClient.Do(req)
 	if err!=nil{
-		prp.ErrorInfo("Initiate PostSmContexts failure.")
+		plt.ErrorInfo("Initiate PostSmContexts failure.")
 		log.Fatal(err)
 		// TODO
 		return model.SmContextCreatedData{},nil,nil

@@ -1051,7 +1051,7 @@ components:
         # 1st condition: restrictionType and areas attributes shall be either both absent 
         #                or both present
         #
-        - oneOf:
+        - oneOf:a
             - not:
                 required: [ restrictionType ]
             - required: [ areas ]

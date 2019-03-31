@@ -11,4 +11,74 @@
 package svcmngclient
 
 type NfProfile struct {
+	nfInstanceId string
+        nfType string
+	$ref: '#/components/schemas/NFType'
+        nfStatus:
+	$ref: '#/components/schemas/NFStatus'
+        heartBeatTimer:
+	type: integer
+	plmnList:
+	type: array
+	items:
+	$ref: '#/components/schemas/PlmnId'
+          minItems: 1
+	sNssais:
+	type: array
+	items:
+	$ref: '#/components/schemas/Snssai'
+          minItems: 1
+	nsiList:
+	type: array
+	items:
+	type: string
+	minItems: 1
+	fqdn:
+	$ref: '#/components/schemas/Fqdn'
+        interPlmnFqdn:
+	$ref: '#/components/schemas/Fqdn'
+        ipv4Addresses:
+	type: array
+	items:
+	$ref: '#/components/schemas/Ipv4Addr'
+          minItems: 1
+	ipv6Addresses:
+	type: array
+	items:
+	$ref: '#/components/schemas/Ipv6Addr'
+          minItems: 1
+	allowedPlmns:
+	type: array
+	items:
+	$ref: '#/components/schemas/PlmnId'
+          minItems: 1
+	allowedNfTypes:
+	type: array
+	items:
+	$ref: '#/components/schemas/NFType'
+          minItems: 1
+	allowedNfDomains:
+	type: array
+	items:
+	type: string
+	minItems: 1
+	allowedNssais:
+	type: array
+	items:
+	$ref: '#/components/schemas/Snssai'
+          minItems: 1
+	priority:
+	type: integer
+	minimum: 0
+	maximum: 65535
+	capacity:
+	type: integer
+	minimum: 0
+	maximum: 65535
+	load:
+	type: integer
+	minimum: 0
+	maximum: 100
+	locality:
+	type: string
 }
