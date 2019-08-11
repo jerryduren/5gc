@@ -107,7 +107,7 @@ func (ap AddressPool)Less(v1,v2 interface{})bool{
 	return v1.(string)<v2.(string)
 }
 
-func (ap *AddressPool)String()string{
+func (ap AddressPool)String()string{
 	result:=fmt.Sprintf("Name = %s: \n",ap.Name)
 	for _,v:=range ap.Ipv4SortedSegmentList{
 		result = result+fmt.Sprintf("---- %s; Number: %d; Status: ", ipv4ToString(v.StartAddress),v.Number)
@@ -166,6 +166,7 @@ func (ap *AddressPool)ReleaseIpv4Address(addr uint32)error{
 }
 
 func NewAddressPool(name string)*AddressPool{
+	// 应该要检查，Name不要为空
 	return &AddressPool{
 		Name:				                 name,
 		Ipv4SortedSegmentList: NewIpv4AddressSegments(),
@@ -192,7 +193,7 @@ type DnnAddressPool struct {
 	AddressPoolNameList map[string]bool
 }
 
-// implement Entity interface
+// implement Entity interface BEGIN ...注意，Entity的实现不能是指针方法，类型查询的时候需要用指针方法
 func (dap DnnAddressPool)GetKey()interface{}{
 	return dap.Dnn
 }
@@ -201,7 +202,7 @@ func (dap DnnAddressPool)Less(v1,v2 interface{})bool{
 	return v1.(string)<v2.(string)
 }
 
-func (dap *DnnAddressPool)String()string{
+func (dap DnnAddressPool)String()string{
 	result:=fmt.Sprintf("Dnn = %s; Address Pool List: ",dap.Dnn)
 	for name,_:=range dap.AddressPoolNameList{
 		result=result+name+" "
@@ -217,6 +218,7 @@ func (dap *DnnAddressPool)String()string{
 	}
 	return result+"\n"
 }
+// implement Entity interface END
 
 func (dap *DnnAddressPool)AddAddressPool(tai string,addrPoolName string){
 	if tai !=""{
@@ -239,6 +241,26 @@ func (dap *DnnAddressPool)AddAddressPool(tai string,addrPoolName string){
 
 func (dap *DnnAddressPool)DeleteAddressPool(tai string,addrPoolName string){
 	// TODO
+}
+
+func (dap *DnnAddressPool)GetAddressPoolList(tai string)(poolList []string,err error){
+	if tai=="" {
+		for k,_:=range dap.AddressPoolNameList{
+			poolList=append(poolList,k)
+		}
+	}else {
+		if v,ok:=dap.LocationList[tai];ok{
+			for k,_:=range v.AddressPoolNameList{
+				poolList=append(poolList,k)
+			}
+		}
+	}
+	
+	if len(poolList)==0{
+		err=errors.New("No Available Address")
+	}
+	
+	return poolList,err
 }
 
 func NewDnnAddressPool(dnn string)*DnnAddressPool{

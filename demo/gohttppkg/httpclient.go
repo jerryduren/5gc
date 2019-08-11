@@ -111,7 +111,7 @@ func CustomizeRequest(method string, pattern string, body io.Reader){
 	
 	// Set Request Body
 	
-	// Call client.Do to send request message, and wait server to response
+	// Call client.Do to send request message, and wait commondata to response
 	rsp, err:=client.Do(req)
 	
 	if err!=nil{
